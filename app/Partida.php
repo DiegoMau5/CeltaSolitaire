@@ -3,8 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
-class User extends Model
+class Partida extends Model
 {
     use Notifiable;
 
@@ -21,6 +22,6 @@ class User extends Model
 
 
     protected $hidden = [
-         
+
     ];
 }
