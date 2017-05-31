@@ -20,4 +20,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+//Ruta para el administrador
+
 Route::get('admin',['middleware' => 'auth' , 'uses' => 'AdminController@admin']);

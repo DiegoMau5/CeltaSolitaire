@@ -29,7 +29,8 @@ class AdminController extends Controller
         if ($this->isAdmin()){
             return view('admin.index');
         } else{
-            return redirect()->back();
+            return redirect()->route('home');
+
         }
     }
 }

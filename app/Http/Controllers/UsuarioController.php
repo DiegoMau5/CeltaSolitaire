@@ -40,11 +40,11 @@ class UsuarioController extends Controller
                 $usuario->user_name = $request->input('user_name');
                 $usuario->password = $request->input('password');
                 $usuario->name = $request->input('name');
-                $usuario->apellidos = $request->input('apellido');
+                $usuario->apellido = $request->input('apellido');
                 $usuario->email = $request->input('email');
-                $usuario->password = $request->input('telefono');
-                $usuario->password = $request->input('admin');
-                $usuario->password = $request->input('enable');
+                $usuario->telefono = $request->input('telefono');
+                $usuario->admin = $request->input('admin');
+                $usuario->enable = $request->input('enable');
                 $usuario->save();
 
 
@@ -65,7 +65,8 @@ class UsuarioController extends Controller
         } catch (QueryException $e) {
             return response()->json([
                 "code"=>"400",
-                "msg"=>"el usuario ya existe"
+                "msg"=>"el usuario ya existe",
+                "error"=>$e
             ],400);
         }
 
@@ -104,17 +105,17 @@ class UsuarioController extends Controller
             $usuario->user_name = $request->input('user_name');
             $usuario->password = $request->input('password');
             $usuario->name = $request->input('name');
-            $usuario->apellidos = $request->input('apellido');
+            $usuario->apellido = $request->input('apellido');
             $usuario->email = $request->input('email');
-            $usuario->password = $request->input('telefono');
-            $usuario->password = $request->input('admin');
-            $usuario->password = $request->input('enable');
+            $usuario->telefono = $request->input('telefono');
+            $usuario->admin = $request->input('admin');
+            $usuario->enable = $request->input('enable');
             $usuario->save();
 
             return response() -> json([
                 "msg"=>"Succes",
                 "code"=>"200",
-                "id"=> $usuario->toArray()
+                "Usuario"=> $usuario->toArray()
             ],200);
 
         }catch (ModelNotFoundException $e) {
@@ -128,6 +129,7 @@ class UsuarioController extends Controller
             return response()->json([
                 "code"=>"400",
                 "msg"=>"el usuario ya existe"
+
             ],400);
         }
 

@@ -17,18 +17,18 @@ use Illuminate\Http\Request;
 //    return $request->user();
 //});
 
+// Rutas para Usuario
 
+Route::get('users', 'UsuarioController@index');
+Route::get('users/{id}', 'UsuarioController@show');
+Route::post('users', 'UsuarioController@store');
+Route::put('users/{id}', 'UsuarioController@update');
+Route::delete('users/{id}', 'UsuarioController@destroy');
 
-Route::get('user', 'UsuarioController@index');
-Route::get('user/{id}', 'UsuarioController@show');
-Route::post('user', 'UsuarioController@store');
-Route::put('user/{id}', 'UsuarioController@update');
-Route::delete('user/{id}', 'UsuarioController@destroy');
+//Rutas para partida
 
-//rutas para partida
-
-Route::get('partida', 'PartidaController@index');
-Route::get('partida/{id}', 'PartidaController@show');
-Route::post('partida', 'PartidaController@store');
-Route::put('partida/{id}', 'PartidaController@update');
-Route::delete('partida/{id}', 'PartidaController@destroy');
+Route::get('partidas', 'PartidaController@index');
+Route::get('partidas/{id}', 'PartidaController@show');
+Route::post('partidas', 'PartidaController@store');
+Route::put('partidas/{id}', 'PartidaController@update');
+Route::delete('partidas/{id}', 'PartidaController@destroy');
