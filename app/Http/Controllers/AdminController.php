@@ -33,4 +33,13 @@ class AdminController extends Controller
 
         }
     }
+
+    public function showProfile(){
+        if ($this->isAdmin()){
+            return view('admin.profileUser');
+        } else{
+            return redirect()->route('home');
+
+        }
+    }
 }

@@ -2,6 +2,13 @@
 
 <!-- Definimos Sección -->
 
+@section('dropdown-menu')
+    <li>
+        <a href="{{ route('home') }}"> Home </a>
+
+    </li>
+@endsection
+
 @section('content')
     <br><br>
 

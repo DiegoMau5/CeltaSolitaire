@@ -22,4 +22,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Ruta para el administrador
 
-Route::get('admin',['middleware' => 'auth' , 'uses' => 'AdminController@admin']);
+Route::get('admin',['middleware' => 'auth' , 'uses' => 'AdminController@admin'])->name('admin');
+
+Route::get('profile',['middleware' => 'auth' , 'uses' => 'AdminController@showProfile']);

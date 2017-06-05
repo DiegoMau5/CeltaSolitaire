@@ -101,15 +101,32 @@ class UsuarioController extends Controller
             $usuario = \App\User::findOrFail($id); // find the user by id
 
             //update user's attributes and save the user
+            if ($request->input('user_name')!=null){
+                $usuario->user_name = $request->input('user_name');
+            }
+            if ($request->input('password')!=null) {
+                $usuario->password = $request->input('password');
 
-            $usuario->user_name = $request->input('user_name');
-            $usuario->password = $request->input('password');
-            $usuario->name = $request->input('name');
-            $usuario->apellido = $request->input('apellido');
-            $usuario->email = $request->input('email');
-            $usuario->telefono = $request->input('telefono');
-            $usuario->admin = $request->input('admin');
-            $usuario->enable = $request->input('enable');
+            }
+            if ($request->input('name')!=null) {
+                $usuario->name = $request->input('name');
+            }
+            if ($request->input('apellido')!=null) {
+                $usuario->apellido = $request->input('apellido');
+            }
+            if ($request->input('email')!=null) {
+                $usuario->email = $request->input('email');
+            }
+            if ($request->input('telefono')!=null) {
+                $usuario->telefono = $request->input('telefono');
+            }
+            if ($request->input('admin')!=null) {
+                $usuario->admin = $request->input('admin');
+            }
+            if ($request->input('enable')!=null) {
+                $usuario->enable = $request->input('enable');
+            }
+
             $usuario->save();
 
             return response() -> json([
