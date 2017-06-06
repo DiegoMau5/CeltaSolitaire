@@ -130,4 +130,10 @@ class PartidaController extends Controller
 
 
     }
+
+
+    public function play(){
+        return view('partida.play');
+    }
 }
+

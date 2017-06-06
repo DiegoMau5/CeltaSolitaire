@@ -6,10 +6,13 @@ $(document).ready(function (){
     $('#saveUser').click(function(){
 
         var idUser= $('#saveUser').attr('name');
-        console.log(idUser);
+
         guardarUsuario(idUser);
 
     });
+
+    showPerfilUsuario();
+
 
 
 });
@@ -34,7 +37,7 @@ function adminControl() {
                         '<div class="row">' +
                         '<div id="username" class="col-xs-3">' + user.user_name + '</div>' +
                         '<div id="email" class="col-xs-3">' + user.email + '</div>' +
-                        '<div class="col-xs-1"><button id="perfilUsuario" class="btn btn-info" onclick="perfilUsuario(' + user.id + ');">' + 'Perfil' + '</button></div>' +
+                        '<div class="col-xs-1"><a id="perfilUsuario" class="btn btn-info" href="http://localhost/laravel/CeltaSolitaire/public/profile?id='+ user.id +'">' + 'Perfil' + '</a></div>' +
 
                         '<div class="col-xs-1"><button id="ok" class="btn btn-warning"  onclick="disenableUser(' + user.id + ');">' + 'Disable' + '</button></div>' +
                         '<div class="col-xs-1"><button id="ko" class="btn btn-danger" onclick="deleteUser(' + user.id + ');">' + 'Delete' + '</button></div>' +
@@ -47,22 +50,36 @@ function adminControl() {
 
 }
 
-function perfilUsuario(id) {
+function showPerfilUsuario() {
 
+   var id = window.location.search.substr(4,4);
  $.getJSON(
      'http://localhost/laravel/CeltaSolitaire/public/api/users/'+id,
      function (data) {
          datos = data.usuario;
-         $('#userNameh3').append(datos.user_name);
-         $('#perfilName').append(datos.name);
-         alert(datos.user_name +" and "+ datos.name);
-         alert("pagina");
+         var nombre = datos.name;
+         var apellido = datos.apellido;
+         var user_name = datos.user_name;
+         var email = datos.email;
+         var telefono = datos.telefono;
+
+         $('#userNameh3').append(user_name);
+         $('#perfilName').append(nombre);
+         $('#perfilApellido').append(apellido);
+         $('#perfilEmail').append(email);
+         $('#perfilTelefono').append(telefono);
+
+         $('#botonSaveProfile').append('' +
+         '<input type="button" id="SaveProfile" class=" btn btn-success" value="save" onclick="guardarUsuarioAdmin(' + id + ');"> </input>')
 
 
      }
 
 
+
+
  );
+
 
 }
 
@@ -144,6 +161,45 @@ function guardarUsuario(id) {
         data: datosJSON,
         success: function () {
             $('#alert_success_profile_user').show();
+
+
+        },
+        error: function () {
+            alert('Está mal');
+        },
+        complete: function () {
+            window.location.reload(true);
+        }
+    });
+}
+
+function guardarUsuarioAdmin(id) {
+
+
+
+    var datosJSON={
+
+        'user_name':$('#inputusernameAdmin').val(),
+        'password':$('#inputpasswordAdmin').val(),
+        'name':$('#inputnameAdmin').val(),
+        'apellido': $('#inputapellidoAdmin').val(),
+        'email': $('#inputemailAdmin').val(),
+        'telefono':$('#inputtelefonoAdmin').val()
+    }
+
+
+
+    $.ajax({
+        url: 'http://localhost/laravel/CeltaSolitaire/public/api/users/' + id,
+        type: 'PUT',
+        dataType: 'json',
+        data: {
+
+            format: 'json'
+        },
+        data: datosJSON,
+        success: function () {
+            $('#alert_success_profile_admin').show();
 
 
         },

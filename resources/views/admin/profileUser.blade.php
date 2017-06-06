@@ -1,8 +1,24 @@
 
 @extends('layouts.app')
 
+@section('dropdown-menu')
+    @if (Auth::User()->admin == 1)
+        <li>
+            <a href="{{ route('admin') }}"> Panel </a>
+
+        </li>
+    @endif
+@endsection
 @section('content')
 
+    <div class="container">
+        <div class="row">
+            <div id="alert_success_profile_admin" class="alert alert-success alert-dismissible" role="alert" style="display: none;">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Warning!</strong> Better check yourself, you're not looking too good.
+            </div>
+        </div>
+    </div>
 
     <div class="container">
         <div class="row">
@@ -59,7 +75,7 @@
                                                 <!-- Text input-->
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="textinput">Apellidos</label>
-                                                    <label id="pefilApellido" class="col-md-1 control-label" for="textinput"></label>
+                                                    <label id="perfilApellido" class="col-md-1 control-label" for="textinput"></label>
                                                 </div>
 
                                                 <!-- Text input-->
@@ -92,14 +108,14 @@
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="textinput">Name</label>
                                                     <div class="col-md-4">
-                                                        <input id="inputname" name="textinput" placeholder="input your name" class="form-control input-md"  type="text">
+                                                        <input id="inputnameAdmin" name="textinput" placeholder="input your name" class="form-control input-md"  type="text">
 
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="textinput">Apellido</label>
                                                     <div class="col-md-4">
-                                                        <input id="inputapellido" name="textinput" placeholder="input your apellido" class="form-control input-md"  type="text">
+                                                        <input id="inputapellidoAdmin" name="textinput" placeholder="input your apellido" class="form-control input-md"  type="text">
 
                                                     </div>
                                                 </div>
@@ -107,14 +123,14 @@
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="textinput">User Name</label>
                                                     <div class="col-md-4">
-                                                        <input id="inputusername" name="textinput" placeholder="input your user name" class="form-control input-md"  type="text">
+                                                        <input id="inputusernameAdmin" name="textinput" placeholder="input your user name" class="form-control input-md"  type="text">
 
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="textinput">Password</label>
                                                     <div class="col-md-4">
-                                                        <input id="inputpassword" name="textinput"  type="password" placeholder="input your password" class="form-control input-md"  type="text">
+                                                        <input id="inputpasswordAdmin" name="textinput"  type="password" placeholder="input your password" class="form-control input-md"  type="text">
 
                                                     </div>
                                                 </div>
@@ -123,14 +139,14 @@
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="textinput">Email</label>
                                                     <div class="col-md-4">
-                                                        <input id="inputemail"  type="email" name="textinput" placeholder="input your email" class="form-control input-md"  type="text">
+                                                        <input id="inputemailAdmin"  type="email" name="textinput" placeholder="input your email" class="form-control input-md"  type="text">
 
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="textinput">Telefono</label>
                                                     <div class="col-md-4">
-                                                        <input id="inputtelefono" name="textinput" placeholder="input your telefono" class="form-control input-md"  type="text">
+                                                        <input id="inputtelefonoAdmin" name="textinput" placeholder="input your telefono" class="form-control input-md"  type="text">
 
                                                     </div>
                                                 </div>
@@ -138,8 +154,8 @@
 
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" ></label>
-                                                    <div class="col-md-8">
-                                                        <input   id="saveUser" name="{{Auth::User()->id}}" class="btn btn-success" value="Save"/>
+                                                    <div id=botonSaveProfile class="col-md-8">
+
 
                                                     </div>
                                                 </div>

@@ -20,8 +20,13 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-//Ruta para el administrador
+//Rutas para el administrador
 
 Route::get('admin',['middleware' => 'auth' , 'uses' => 'AdminController@admin'])->name('admin');
 
 Route::get('profile',['middleware' => 'auth' , 'uses' => 'AdminController@showProfile']);
+
+
+//Rutas para el juego
+
+Route::get('play', 'PartidaController@play')->name('play');
