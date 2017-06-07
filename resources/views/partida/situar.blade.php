@@ -21,8 +21,9 @@
 
 
             <ul class="navPlay">
-                <li id="situar"><a href="{{ route('situar') }}">Situar</a></li>
+                <li id="situar"><a href="#">Situar</a></li>
                 <li id="jugar">Jugar</li>
+                <li><a href="{{ route('play') }}">Tablero</a></li>
                 <li><a href="#">Guardar Estado</a></li>
                 <li><a href="#">Registar Puntuacion</a></li>
 
@@ -58,7 +59,7 @@
         </div>
         <div id="board"></div>
 
-        <script src="{{ asset('js/jugar.js') }}"></script>
+        <script src="{{ asset('js/situar.js') }}"></script>
 
     @else
         <h3> {{Auth::User()->name}} NO ESTA DADO DE ALTA EN EL JUEGO </h3>

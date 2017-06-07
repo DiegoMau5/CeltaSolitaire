@@ -135,5 +135,8 @@ class PartidaController extends Controller
     public function play(){
         return view('partida.play');
     }
+    public function situar(){
+        return view('partida.situar');
+   }
 }
 

@@ -7,6 +7,12 @@
         <a href="{{ route('home') }}"> Home </a>
 
     </li>
+    @if (Auth::User()->admin == 1)
+        <li>
+            <a href="{{ route('play') }}"> Juego </a>
+
+        </li>
+    @endif
 @endsection
 
 @section('content')

@@ -16,6 +16,7 @@
             crossorigin="anonymous"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/game.css') }}" rel="stylesheet">
 </head>
 <body>
 <div id="app">
@@ -82,5 +83,6 @@
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/functions.js') }}"></script>
+@yield('scipts')
 </body>
 </html>

@@ -7,6 +7,13 @@
 
         </li>
     @endif
+    @if (Auth::User()->enable == 1)
+        <li>
+            <a href="{{ route('play') }}"> Juego </a>
+
+        </li>
+    @endif
+
 @endsection
 
 @section('content')

@@ -1,0 +1,172 @@
+
+
+#headerPlay{
+  margin-top: 3%;
+  width:100%;
+  height: 100%;
+}
+#headerPlay h1{
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
+
+  font-size: 50px;
+}
+
+
+.navPlay ul{
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+   overflow: hidden;
+
+}
+.navPlay li{
+   display: inline;
+   color: black;
+   font-family: monospace;
+   text-align: center;
+   padding: 14px 16px;
+   text-decoration: none;
+
+
+}
+
+ a{
+text-decoration: none;
+color: #000 ;
+}
+
+.navPlay li:hover{
+  font-size: 150%;
+  color: Blue;
+
+}
+.navPlay li a:hover{
+
+  color: Blue;
+}
+
+#left_menuPlay{
+
+  padding: 0;
+  float: left;
+  width: 20%;
+  margin-top: 3%;
+  margin-left: 5%;
+  font-family: monospace;
+}
+
+#left_menuPlay h2 {
+  color: Black;
+  font-family: monospace;
+  text-align: center;
+
+}
+
+
+
+
+#board{
+
+  min-width: 100px;
+  float:right;
+  margin-top: 5%;
+  margin-right: 20%;
+  padding: 0;
+  border: 0;
+  border: 0px solid #8B4513;
+
+
+}
+
+#board ul {
+    height: 71px;
+    width: 100%;
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+    background: #CEE3F6;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border: 0px;
+
+
+}
+
+#board li {
+    height: 70px;
+    width: 70px;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+
+
+}
+
+
+
+.celda{
+  border: 1px solid #CEE3F6;
+  background: #EFF5FB;
+
+
+
+
+}
+
+
+.bola {
+    background: url('../ball.svg') center;
+    background-size: 80% 80%;
+    background-repeat: no-repeat;
+
+}
+
+.gap {
+    background: url('../empty_gap.svg') center;
+    background-size: 80% 80%;
+    background-repeat: no-repeat;
+
+
+
+}
+
+#divCuadroResult{
+    position: absolute;
+    font-family: monospace;
+    font-size: 200%;
+    top: 50%;
+    left: 50%;
+    height: 150px;
+    width: 400px;
+    background: white;
+    opacity: 0.7;
+    color: #783bff;
+    text-align: center;
+}
+
+#welcome{
+
+  min-width: 100px;
+  float:right;
+  margin-top: 5%;
+  margin-right: 20%;
+  padding: 0;
+  border: 0;
+  color: black;
+  background: PeachPuff;
+
+  font-family: monospace;
+  font-size: 250%;
+
+
+}
+
+.reloj{
+    width: 15.5%;
+}
+#countDown{
+  width: 30%;
+}

@@ -30,3 +30,4 @@ Route::get('profile',['middleware' => 'auth' , 'uses' => 'AdminController@showPr
 //Rutas para el juego
 
 Route::get('play', 'PartidaController@play')->name('play');
+Route::get('play/situar', 'PartidaController@situar')->name('situar');
