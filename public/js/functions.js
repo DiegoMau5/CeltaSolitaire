@@ -12,6 +12,8 @@ $(document).ready(function (){
     });
 
     showPerfilUsuario();
+    showScore();
+    filtroTablaPuntuacion();
 
 
 
@@ -52,7 +54,7 @@ function adminControl() {
 
 function showPerfilUsuario() {
 
-   var id = window.location.search.substr(4,4);
+   var id = window.location.search.substr(4);
  $.getJSON(
      'http://localhost/laravel/CeltaSolitaire/public/api/users/'+id,
      function (data) {
@@ -212,8 +214,113 @@ function guardarUsuarioAdmin(id) {
     });
 }
 
+function filtroTablaPuntuacion() {
+    var activeSystemClass = $('.list-group-item.active');
 
+    //something is entered in search form
+    $('#system-search').keyup( function() {
+        var that = this;
+        // affect all table rows on in systems table
+        var tableBody = $('.table-list-search tbody');
+        var tableRowsClass = $('.table-list-search tbody tr');
+        $('.search-sf').remove();
+        tableRowsClass.each( function(i, val) {
 
+            //Lower text for case insensitive
+            var rowText = $(val).text().toLowerCase();
+            var inputText = $(that).val().toLowerCase();
+            if(inputText != '')
+            {
+                $('.search-query-sf').remove();
+                tableBody.prepend('<tr class="search-query-sf"><td colspan="6"><strong>Searching for: "'
+                    + $(that).val()
+                    + '"</strong></td></tr>');
+            }
+            else
+            {
+                $('.search-query-sf').remove();
+            }
+
+            if( rowText.indexOf( inputText ) == -1 )
+            {
+                //hide rows
+                tableRowsClass.eq(i).hide();
+
+            }
+            else
+            {
+                $('.search-sf').remove();
+                tableRowsClass.eq(i).show();
+            }
+        });
+        //all tr elements are hidden
+        if(tableRowsClass.children(':visible').length == 0)
+        {
+            tableBody.append('<tr class="search-sf"><td class="text-muted" colspan="6">No entries found.</td></tr>');
+        }
+    });
+}
+
+function showScore(){
+
+    var idUsuarioAdmin = window.location.search.substr(4);
+    var idUser= $('#score').attr('name');
+
+    $.getJSON(
+
+        'http://localhost/laravel/CeltaSolitaire/public/api/partidasUser/'+idUser,
+        function (data) {
+            $.each(data.partida.partidas_user, function (i, partida){
+
+                if(partida.acabada == 1){
+                    $('#tablePuntuacion').append('' +
+                    '<tr>'+
+                        '<td>' + partida.score + '</td>' +
+                        '<td>' + partida.created_at + '</td>' +
+                        '<td><button id="ko" class="btn btn-danger" onclick="deletePartida(' + partida.id + ');">' + 'Delete' + '</button></td>' +
+                    '</tr>');
+                }
+            });
+        }
+
+    );
+
+    $.getJSON(
+
+        'http://localhost/laravel/CeltaSolitaire/public/api/partidasUser/'+idUsuarioAdmin,
+        function (data) {
+            $.each(data.partida.partidas_user, function (i, partida){
+
+                if(partida.acabada == 1){
+                    $('#tablePuntuacionUsuarioAdmin').append('' +
+                        '<tr>'+
+                        '<td>' + partida.score + '</td>' +
+                        '<td>' + partida.created_at + '</td>' +
+                        '<td><button id="ko" class="btn btn-danger" onclick="deletePartida(' + partida.id + ');">' + 'Delete' + '</button></td>' +
+                        '</tr>');
+                }
+            });
+        }
+
+    );
+
+}
+
+function deletePartida(id) {
+    $.ajax({
+        url: 'http://localhost/laravel/CeltaSolitaire/public/api/partidas/' + id,
+        type: 'DELETE',
+        success: function () {
+
+        },
+        error: function () {
+            alert('Está mal');
+        },
+        complete: function () {
+            window.location.reload(true);
+        }
+    });
+}
 
 
 

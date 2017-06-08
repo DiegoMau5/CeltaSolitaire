@@ -25,4 +25,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'updated_at', 'remember_token'
     ];
+
+    public function partidasUser(){
+        return $this-> hasMany('App\Partida');
+    }
 }

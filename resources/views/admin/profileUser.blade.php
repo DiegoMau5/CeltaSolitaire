@@ -33,10 +33,11 @@
         <div class="row ">
             <div class="col-sm-12 col-md-12 user-details center-block centered" >
                 <div class="user-image">
-                    <img src="http://www.gravatar.com/avatar/2ab7b2009d27ec37bffee791819a090c?s=100&d=mm&r=g" alt="Karan Singh Sisodia" title="Karan Singh Sisodia" class="img-circle">
+                    <img id = "imgPerfil"src="http://localhost/laravel/CeltaSolitaire/public/player.png" alt="Entrenador" title="Entrenador" class="img-circle">
                 </div>
                 <div class="user-info-block center-block ">
                     <div class="user-heading">
+                        <br>
                         <h3 id="userNameh3"></h3>
                         <span id="nameSpan" class="help-block"></span>
                     </div>
@@ -167,7 +168,33 @@
                                 </div>
                             </div>
                             <div id="score" class="tab-pane">
-                                <h4>Puntuación</h4>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <form action="#" method="get">
+                                            <div class="input-group">
+                                                <input class="form-control" id="system-search" name="q" placeholder="Search for" required>
+                                                <span class="input-group-btn">
+                                                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                                                </span>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <table class="table table-list-search" >
+                                            <thead>
+                                            <tr>
+                                                <th>Score</th>
+                                                <th>Date</th>
+                                                <th>Delete match</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="tablePuntuacionUsuarioAdmin">
+
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>

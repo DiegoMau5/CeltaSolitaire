@@ -17,7 +17,7 @@
 
 @section('content')
     @if (Auth::User()->enable == 1)
-        <header id="headerPlay">
+        <header id="headerPlay" name = {{Auth::User()->id}}>
 
 
             <ul class="navPlay">

@@ -16,7 +16,7 @@ $(document).ready(function (){
 
 function guardarPartida() {
     fin =$('#divCuadroResult').val();
-    alert(fin);
+
     var acabada = 0;
     if(fin != null){
          acabada = 1;
@@ -28,9 +28,10 @@ function guardarPartida() {
             'score': $('#etiqueta_puntuacion').val(),
             'user_id': id,
             'tablero': tablero,
-            'acabada': acabada
+            'acabada': acabada,
+            'time':$('#countDown').val()
     }
-    //alert(datosJSON.score + " " + datosJSON.id_user + " " + datosJSON.tablero);
+
     $.ajax({
         url: 'http://localhost/laravel/CeltaSolitaire/public/api/partidas',
         type: 'POST',

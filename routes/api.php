@@ -29,6 +29,7 @@ Route::delete('users/{id}', 'UsuarioController@destroy');
 
 Route::get('partidas', 'PartidaController@index');
 Route::get('partidas/{id}', 'PartidaController@show');
+Route::get('partidasUser/{user_id}', 'PartidaController@showPartidaUser');
 Route::post('partidas', 'PartidaController@store');
 Route::put('partidas/{id}', 'PartidaController@update');
 Route::delete('partidas/{id}', 'PartidaController@destroy');

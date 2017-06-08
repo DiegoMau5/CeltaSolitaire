@@ -25,7 +25,7 @@ class PartidaController extends Controller
             return response()->json([
                 "msg"=>"success",
                 "code"=>"200",
-                "usuarios" => $partida
+                "partida" => $partida
             ],200);
         }
 
@@ -74,26 +74,48 @@ class PartidaController extends Controller
     }
 
      public function show($id)
-     {
-     	try {
-     		$partida = \App\Partida::findOrFail($id);
+{
+    try {
+        $partida = \App\Partida::findOrFail($id);
 
-     		return response()->json([
-     			"msg"=>"success",
-     			"code"=>"200",
-     			"partida" =>$partida->toArray()
-     		]);
+        return response()->json([
+            "msg"=>"success",
+            "code"=>"200",
+            "partida" =>$partida->toArray()
+        ]);
 
-     	} catch (ModelNotFoundException $e) {
+    } catch (ModelNotFoundException $e) {
 
-     			return response()->json([
-     				"msg"=>"partida no encontrada",
-     				"code"=>"404"
-     			],404);
-     	}
+        return response()->json([
+            "msg"=>"partida no encontrada",
+            "code"=>"404"
+        ],404);
+    }
 
 
-     }
+}
+    public function showPartidaUser($user_id)
+    {
+        try {
+            $partida = \App\User :: with('partidasUser')->find($user_id);
+//            $partida = \App\Partida::find($user_id);
+
+            return response()->json([
+                "msg"=>"success",
+                "code"=>"200",
+                "partida" =>$partida->toArray()
+            ]);
+
+        } catch (ModelNotFoundException $e) {
+
+            return response()->json([
+                "msg"=>"partida no encontrada",
+                "code"=>"404"
+            ],404);
+        }
+
+
+    }
 
     public function update($id, Request $request)
     {

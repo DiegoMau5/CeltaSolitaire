@@ -32,10 +32,11 @@
     <div class="row ">
         <div class="col-sm-12 col-md-12 user-details center-block centered" >
             <div class="user-image">
-                <img src="http://www.gravatar.com/avatar/2ab7b2009d27ec37bffee791819a090c?s=100&d=mm&r=g" alt="Karan Singh Sisodia" title="Karan Singh Sisodia" class="img-circle">
+                <img src="http://localhost/laravel/CeltaSolitaire/public/player.png" alt="Entrenador" title="Entrenador" class="img-circle">
             </div>
             <div class="user-info-block center-block ">
                 <div class="user-heading">
+                    <br>
                     <h3>{{Auth::User()->user_name}}</h3>
                     <span class="help-block">{{Auth::User()->name}}</span>
                 </div>
@@ -46,12 +47,12 @@
                         </a>
                     </li>
                     <li class="col-xs-4 ">
-                        <a class="centered" data-toggle="tab" href="#settings">
+                        <a class="centered" data-toggle="tab" href="#edit">
                             EDIT PROFILE
                         </a>
                     </li>
                     <li class="col-xs-4 ">
-                        <a class="centered" data-toggle="tab" href="#email">
+                        <a class="centered" data-toggle="tab" href="#score">
                             SCORE
                         </a>
                     </li>
@@ -97,7 +98,7 @@
                             </div>
 
                         </div>
-                        <div id="settings" class="tab-pane">
+                        <div id="edit" class="tab-pane">
                             <h4>Edit Information</h4>
                             <div class="container">
                                 <div class="row">
@@ -165,8 +166,34 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="email" class="tab-pane">
-                            <h4>Puntuación</h4>
+                        <div id="score" class="tab-pane" name={{Auth::User()->id}}>
+                               <div class="row">
+                                   <div class="col-md-3">
+                                       <form action="#" method="get">
+                                           <div class="input-group">
+                                               <input class="form-control" id="system-search" name="q" placeholder="Search for" required>
+                                               <span class="input-group-btn">
+                                                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                                                </span>
+                                           </div>
+                                       </form>
+                                   </div>
+                                   <div class="col-md-9">
+                                       <table class="table table-list-search" >
+                                           <thead>
+                                               <tr>
+                                                   <th>Score</th>
+                                                   <th>Date</th>
+                                                   <th>Delete match</th>
+                                               </tr>
+                                           </thead>
+                                           <tbody id="tablePuntuacion">
+
+                                           </tbody>
+
+                                       </table>
+                                   </div>
+                               </div>
                         </div>
 
                     </div>
@@ -174,6 +201,7 @@
             </div>
         </div>
     </div>
+
 </div>
 
 
