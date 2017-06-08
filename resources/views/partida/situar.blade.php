@@ -24,8 +24,9 @@
                 <li id="situar"><a href="#">Situar</a></li>
                 <li id="jugar">Jugar</li>
                 <li><a href="{{ route('play') }}">Tablero</a></li>
-                <li><a href="#">Guardar Estado</a></li>
-                <li><a href="#">Registar Puntuacion</a></li>
+                <li class="guardar"><a >Guardar Estado</a></li>
+                <li><a class="recuperar">Recuperar Estado</a></li>
+
 
             </ul>
             <hr>
@@ -60,6 +61,7 @@
         <div id="board"></div>
 
         <script src="{{ asset('js/situar.js') }}"></script>
+        <script src="{{ asset('js/partida.js') }}"></script>
 
     @else
         <h3> {{Auth::User()->name}} NO ESTA DADO DE ALTA EN EL JUEGO </h3>

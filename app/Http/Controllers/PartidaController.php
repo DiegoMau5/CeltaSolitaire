@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
-use Illuminate\Database\Eloquent\ModelNotFoundException as ModelNotFoundException; // import model for ErrorExceptions
+use Illuminate\Database\Eloquent\ModelNotFoundException as ModelNotFoundException;
+use Illuminate\Support\Facades\Auth; // import model for ErrorExceptions
 
 
 class PartidaController extends Controller
@@ -37,14 +38,25 @@ class PartidaController extends Controller
     {
 
 
-        $partida = new \App\Partida(); //Created a new Usuario
+        $partida = new \App\Partida(); //Created a new Partida
 
+        if ($request->input('user_id') != null){
+            $partida->user_id = $request->input('user_id');
+        }
+        if ($request->input('time') != null ){
+            $partida->time = $request->input('time');
+        }
+        if ($request->input('tablero') != null){
+            $partida->tablero = $request->input('tablero');
+        }
 
-        $partida->user_id = $request->input('user_id');
-        $partida->time = $request->input('time');
-        $partida->tablero = $request->input('tablero');
-        $partida->score = $request->input('score');
-        $partida->acabada = $request->input('acabada');
+        if ($request->input('score') != null ){
+            $partida->score = $request->input('score');
+        }
+
+        if ($request->input('acabada') != null){
+            $partida->acabada = $request->input('acabada');
+        }
 
         $partida->save();
 
@@ -88,12 +100,24 @@ class PartidaController extends Controller
 
 
         $partida = \App\Partida::findOrFail($id);
+        if ($request->input('user_id') != null){
+            $partida->user_id = $request->input('user_id');
+        }
+        if ($request->input('time') != null ){
+            $partida->time = $request->input('time');
+        }
+        if ($request->input('tablero') != null){
+            $partida->tablero = $request->input('tablero');
+        }
 
-        $partida->user_id = $request->input('user_id');
-        $partida->time = $request->input('time');
-        $partida->tablero = $request->input('tablero');
-        $partida->score = $request->input('score');
-        $partida->acabada = $request->input('acabada');
+        if ($request->input('score') != null ){
+            $partida->score = $request->input('score');
+        }
+
+        if ($request->input('acabada') != null){
+            $partida->acabada = $request->input('acabada');
+        }
+
 
         $partida->save();
 
@@ -133,7 +157,8 @@ class PartidaController extends Controller
 
 
     public function play(){
-        return view('partida.play');
+       return view('partida.play');
+
     }
     public function situar(){
         return view('partida.situar');

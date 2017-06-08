@@ -16,15 +16,24 @@
 @endsection
 
 @section('content')
+    <div class="container">
+        <div class="row">
+            <div id="alert_success_play" class="alert alert-success alert-dismissible" role="alert" style="display: none;">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>GOOD!! Game Save</strong>
+            </div>
+        </div>
+    </div>
     @if (Auth::User()->enable == 1)
-        <header id="headerPlay">
+        <header id="headerPlay" name = {{Auth::User()->id}}>
 
 
             <ul class="navPlay">
                 <li id="situar"><a href="{{ route('situar') }}">Situar</a></li>
                 <li id="jugar">Jugar</li>
-                <li><a href="#">Guardar Estado</a></li>
-                <li><a href="#">Registar Puntuacion</a></li>
+                <li class="guardar"><a >Guardar Estado</a></li>
+                <li><a class="recuperar">Recuperar Estado</a></li>
+
 
             </ul>
             <hr>
@@ -59,6 +68,7 @@
         <div id="board"></div>
 
         <script src="{{ asset('js/jugar.js') }}"></script>
+        <script src="{{ asset('js/partida.js') }}"></script>
 
     @else
         <h3> {{Auth::User()->name}} NO ESTA DADO DE ALTA EN EL JUEGO </h3>
