@@ -15,9 +15,11 @@
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
 
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
     <link href="{{ asset('css/game.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/table.css') }}" rel="stylesheet">
 </head>
 <body>
 <div id="app">

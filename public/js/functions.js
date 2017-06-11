@@ -11,13 +11,19 @@ $(document).ready(function (){
 
     });
 
+
+
     showPerfilUsuario();
     showScore();
+    showAllScore();
     filtroTablaPuntuacion();
 
 
 
+
 });
+
+
 
 function adminControl() {
     $.getJSON(
@@ -321,6 +327,30 @@ function deletePartida(id) {
         }
     });
 }
+
+function showAllScore(){
+
+    $.getJSON(
+        'http://localhost/laravel/CeltaSolitaire/public/api/partidas',
+        function (data) {
+            $.each(data.partida, function(i,partida){
+                if (partida.acabada){
+                    $('#myTable').append('' +
+                        '<tr>' +
+                        '<td>' + partida.user_id + '</td>' +
+                        '<td>' + partida.score + '</td>' +
+                        '<td>' + partida.updated_at + '</td>' +
+                        '<td><button id="koPartida" class="btn btn-danger" onclick="deletePartida(' + partida.id + ');">' + 'Delete' + '</button></td>' +
+                        '</tr>'
+                    );
+                }
+            });
+        }
+    );
+}
+
+
+
 
 
 

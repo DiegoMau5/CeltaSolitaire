@@ -62,7 +62,22 @@
                 </div>
             </div>
             <div class="col-md-12">
-                Puntuaciones
+                <h4>Puntuaciones</h4>
+                <table class="paginated table table-hover table-responsive">
+                    <thead>
+                    <tr>
+                        <th scope="col">User Id</th>
+                        <th scope="col">Score</th>
+                        <th scope="col">Date Match</th>
+
+                    </tr>
+                    </thead>
+                    <tbody id="myTable">
+
+
+                    </tbody>
+                </table>
+
             </div>
         </div>
 
