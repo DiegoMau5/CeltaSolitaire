@@ -63,7 +63,11 @@
             </div>
             <div class="col-md-12">
                 <h4>Puntuaciones</h4>
-                <table class="paginated table table-hover table-responsive">
+
+                <button id="allScore" class="btn btn-default"> All Scores </button>
+                <button id="fiveScore" class="btn btn-default"> Top Five</button>
+                <button id="desplegable" class="btn btn-default"> <> </button>
+                <table class="paginated table table-hover table-responsive" id="tableScore">
                     <thead>
                     <tr>
                         <th scope="col">User Id</th>

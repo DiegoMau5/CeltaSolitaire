@@ -25,7 +25,7 @@
                 <li id="jugar">Jugar</li>
                 <li><a href="{{ route('play') }}">Tablero</a></li>
                 <li class="guardar"><a >Guardar Estado</a></li>
-                <li><a class="recuperar">Recuperar Estado</a></li>
+
 
 
             </ul>

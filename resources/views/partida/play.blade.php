@@ -32,7 +32,7 @@
                 <li id="situar"><a href="{{ route('situar') }}">Situar</a></li>
                 <li id="jugar">Jugar</li>
                 <li class="guardar"><a >Guardar Estado</a></li>
-                <li><a class="recuperar">Recuperar Estado</a></li>
+
 
 
             </ul>
@@ -62,6 +62,11 @@
             <h3>Puntuación
                 <input type="text" name="puntuacion" value=0   id="etiqueta_puntuacion" readonly="">
             </h3>
+            <hr>
+            <div id="recuperarJuego">
+                <h2>Recuperar partidas</h2>
+
+            </div>
 
 
         </div>

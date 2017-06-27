@@ -71,8 +71,8 @@ function createBoard() {
 
 
 
-
     puntuacion = 0;
+
     document.getElementById('etiqueta_puntuacion').value = puntuacion;
     document.getElementById('etiqueta_puntuacion').style.color = "black";
     document.getElementById('jugar').addEventListener("click", createBoard);
@@ -420,7 +420,9 @@ function jugar(event) {
                 document.getElementById(posible).className = 'bola';
                 document.getElementById(clicked[0].id).className = 'gap';
                 eatBall(clicked[0].id, posible);
-
+                if( document.getElementById('etiqueta_puntuacion').value != "0") {
+                    puntuacion = parseInt(document.getElementById('etiqueta_puntuacion').value);
+                }
                 puntuacion = puntuacion + 15;
 
                 document.getElementById('etiqueta_puntuacion').value = puntuacion;

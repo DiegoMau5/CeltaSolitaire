@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException as ModelNotFoundException;
 use Illuminate\Support\Facades\Auth; // import model for ErrorExceptions
@@ -174,6 +175,17 @@ class PartidaController extends Controller
             ],404);
         }
 
+
+    }
+
+    public function diezMejores(){
+        $partida = DB::select('SELECT user_id,score,updated_at FROM `partidas` WHERE acabada = 1   ORDER BY `score` DESC LIMIT 5');
+
+        return response()->json([
+            "msg"=>"success",
+            "code"=>"200",
+            "partida"=>$partida
+        ],200);
 
     }
 

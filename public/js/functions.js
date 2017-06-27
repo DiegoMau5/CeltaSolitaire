@@ -11,11 +11,21 @@ $(document).ready(function (){
 
     });
 
+    $('#tableScore').hide();
 
+    $('#allScore').click(function () {
+        showAllScore();
+    });
+    $('#fiveScore').click(function () {
+        fiveScore();
+    });
+    $('#desplegable').click(function () {
+        $('#tableScore').hide(800);
+    });
 
     showPerfilUsuario();
     showScore();
-    showAllScore();
+
     filtroTablaPuntuacion();
 
 
@@ -330,6 +340,10 @@ function deletePartida(id) {
 
 function showAllScore(){
 
+    $('#myTable').empty();
+
+    $('#tableScore').show(1000);
+
     $.getJSON(
         'http://localhost/laravel/CeltaSolitaire/public/api/partidas',
         function (data) {
@@ -349,6 +363,29 @@ function showAllScore(){
     );
 }
 
+function fiveScore(){
+
+    $('#myTable').empty();
+    $('#tableScore').show(1000);
+    $.getJSON(
+        'http://localhost/laravel/CeltaSolitaire/public/api/partidasUser',
+        function (data) {
+            $.each(data.partida, function(i,partida){
+
+                    $('#myTable').append('' +
+                        '<tr>' +
+                        '<td>' + partida.user_id + '</td>' +
+                        '<td>' + partida.score + '</td>' +
+                        '<td>' + partida.updated_at + '</td>' +
+                        '<td><button id="koPartida" class="btn btn-danger" onclick="deletePartida(' + partida.id + ');">' + 'Delete' + '</button></td>' +
+                        '</tr>'
+                    );
+
+            });
+        }
+    );
+
+}
 
 
 
